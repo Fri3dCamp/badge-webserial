@@ -96,7 +96,8 @@
             save_wifi: async () => {
                 await writetostdin('import settings;'+
                     'settings.set("wifi.essid", "' + component.wifi_ssid + '");' +
-                    'settings.set("wifi.password", "' + component.wifi_password + '");\r\n');
+                    'settings.set("wifi.password", "' + component.wifi_password + '");' +
+                    'settings.store();\r\n');
                 component.$emit('genNotification', 'WiFi settings updated successfully');
             },
             save_audio: async () => {
