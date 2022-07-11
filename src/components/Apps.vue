@@ -181,7 +181,7 @@
         },
         methods: {
             update_local_apps: async () => {
-                let install_paths = ['/flash/apps'];
+                let install_paths = ['/lib/'];
                 let apps = [];
 
                 for(let path of install_paths) {
@@ -194,7 +194,7 @@
                 }
                 component.local_apps = apps;
             },
-            get_local_app_metadata: async (app_slug, install_path='/flash/apps/') => {
+            get_local_app_metadata: async (app_slug, install_path='/lib/') => {
                 let contents = await readfile(install_path + app_slug + '/metadata.json');
                 let metadata;
                 try {
@@ -209,14 +209,14 @@
             },
             get_app_metadata: async (app_slug) => {
                 let metadata_url = 'https://badge.team/eggs/get/' + app_slug + '/json';
-                let response = await fetch(metadata_url, {mode: 'no-cors'});
+                let response = await fetch(metadata_url);
                 let metadata = await response.json();
                 let release_keys = Object.keys(metadata.releases).sort((a, b) => parseInt(a) - parseInt(b));
                 let latest_release_key = release_keys[release_keys.length-1];
                 metadata['latest_release_url'] = metadata.releases[latest_release_key][0]['url'];
                 return metadata;
             },
-            install_app: async (app_slug, is_update=false, install_path='/flash/apps/') => {
+            install_app: async (app_slug, is_update=false, install_path='/lib/') => {
                 component.installing_file = '';
                 component.installing_progress = 0;
                 component.installing = true;
@@ -269,7 +269,7 @@
                     component.installing = false;
                 }
             },
-            uninstall_app: async (app_slug, install_path='/flash/apps/') => {
+            uninstall_app: async (app_slug, install_path='/lib/') => {
                 try {
                     await deldir(install_path+app_slug);
                     component.$emit('genNotification', 'Uninstalled ' + app_slug + ' successfully');
