@@ -99,7 +99,7 @@
                 }
             },
             recover: async (event) => {
-                let badge = badges['pixel'];
+                let badge = badges['fri3d2020'];
                 component.readLoop().catch((error) => {
                     component.render(this.templates.disconnected, error);
                 });

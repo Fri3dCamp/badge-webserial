@@ -77,6 +77,8 @@ export async function fetch_dir(dir_name) {
     }
     let answer = await transceive(`from upysh import ls; ls('${dir_name}')`);
     let lines = answer.trimEnd().split('\n');
+    // Remove "free" line reported by ls
+    lines.pop();
     let result = [dir_name !== '' ? dir_name : '/'];
 
     for (let line of lines) {

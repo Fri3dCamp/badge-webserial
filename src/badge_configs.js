@@ -20,5 +20,16 @@ export const badges = {
             {"filename": "ota_data_initial.bin", "address": 53248, "name": "OTA data"},
             {"filename": "firmware.bin", "address": 65536, "name": "firmware"}
         ]
-    }
+    },
+    "fri3d2020": {
+        "name": "Fri3dCamp",
+        "flashsize": 16,
+        "baudrate": 115200,
+        "flash": [
+            {"filename": "bootloader.bin", "address": 4096, "name": "bootloader"},
+            {"filename": "fri3dcamp202_16MB.bin", "address": 32768, "name": "partition table"},
+            {"filename": "ota_data_initial.bin", "address": 53248, "name": "OTA data"},
+            {"filename": "sha2017.bin", "address": 65536, "name": "firmware"}
+        ]
+    },
 }
