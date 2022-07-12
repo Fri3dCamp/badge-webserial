@@ -134,6 +134,8 @@
 
     let component = undefined;
 
+    let apps_path = '/apps/'
+
     export default {
         name: 'Apps',
         components: {
@@ -181,7 +183,7 @@
         },
         methods: {
             update_local_apps: async () => {
-                let install_paths = ['/lib/'];
+                let install_paths = [apps_path];
                 let apps = [];
 
                 for(let path of install_paths) {
@@ -194,7 +196,7 @@
                 }
                 component.local_apps = apps;
             },
-            get_local_app_metadata: async (app_slug, install_path='/lib/') => {
+            get_local_app_metadata: async (app_slug, install_path=apps_path) => {
                 let contents = await readfile(install_path + app_slug + '/metadata.json');
                 let metadata;
                 try {
@@ -216,7 +218,7 @@
                 metadata['latest_release_url'] = metadata.releases[latest_release_key][0]['url'];
                 return metadata;
             },
-            install_app: async (app_slug, is_update=false, install_path='/lib/') => {
+            install_app: async (app_slug, is_update=false, install_path=apps_path) => {
                 component.installing_file = '';
                 component.installing_progress = 0;
                 component.installing = true;
@@ -268,7 +270,7 @@
                     component.installing = false;
                 }
             },
-            uninstall_app: async (app_slug, install_path='/lib/') => {
+            uninstall_app: async (app_slug, install_path=apps_path) => {
                 try {
                     await deldir(install_path+app_slug);
                     component.$emit('genNotification', 'Uninstalled ' + app_slug + ' successfully');
