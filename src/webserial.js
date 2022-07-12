@@ -234,7 +234,7 @@ export function on_connect() {
 
 
 export async function connect() {
-    port = await navigator.serial.requestPort();
+    port = await navigator.serial.requestPort({ filters: [{ usbVendorId: 0x10c4, usbProductId: 0xea60 }]});
     await port.open({baudRate: 115200});
 
     reader = port.readable.pipeThrough(new TextDecoderStream()).pipeThrough(new TransformStream(new PyShellTransformer())).getReader();
