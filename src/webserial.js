@@ -198,7 +198,15 @@ export async function savefile(filename, contents) {
 
 export function createfolder(folder) {
     folder = strip_flash(folder);
-    return transceive(`from upysh import mkdir; mkdir('${folder}')`);
+    let parents = folder.split('/')
+    parents.shift()
+    let parent = ""
+    while (parents.length > 0) {
+        parent = parent + '/' + parents.shift()
+        console.info('Creating folder ' + parent)
+        transceive(`from upysh import mkdir; mkdir('${parent}')`);
+    }
+    return
 }
 
 export function registerstdout(func) {

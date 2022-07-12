@@ -239,7 +239,6 @@
                     if (!is_update) {
                         let unique_paths = paths.filter((value, index, self) => self.indexOf(value) === index);
                         for (let path of unique_paths) {
-                            console.info('Creating folder', path);
                             await createfolder(path);
                         }
                     }
