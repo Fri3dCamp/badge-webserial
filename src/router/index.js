@@ -30,7 +30,7 @@ export default new Router({
       path: '/update',
       name: 'Update',
       props: { page: 3 },
-      component: Update
+      component: Recover
     },
     {
       path: '/settings',
