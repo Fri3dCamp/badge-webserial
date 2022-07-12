@@ -9,7 +9,7 @@
     </mdb-modal>
     <!-- Sidebar -->
     <div class="sidebar-fixed position-fixed">
-      <a class="logo-wrapper"><img alt="" class="img-fluid" src="./assets/cs_logo_round.png"/></a>
+      <a class="logo-wrapper"><img alt="Fri3d logo" style="background-color: black;" class="img-fluid" src="./assets/fri3d_logo_white.svg"/></a>
       <mdb-list-group class="list-group-flush">
         <router-link to="/apps" @click.native="activeItem = 1">
           <mdb-list-group-item
@@ -54,9 +54,9 @@
       </div>
       <ftr color="primary-color-dark" class="text-center font-small darken-2">
         <div class="pb-4 pt-4">
-          <a href="https://twitter.com/hackzonenl"><mdb-icon fab icon="twitter" class="mr-3"/></a>
-          <a href="https://www.youtube.com/watch?v=G0mEW8f2vac"><mdb-icon fab icon="youtube" class="mr-3"/></a>
-          <a href="https://github.com/hackzone"><mdb-icon fab icon="github" class="mr-3"/></a>
+          <a href="https://www.twitter.com/fri3dcamp"><mdb-icon fab icon="twitter" class="mr-3"/></a>
+          <a href="https://www.facebook.com/Fri3dCamp"><mdb-icon fab icon="facebook" class="mr-3"/></a>
+          <a href="https://github.com/fri3dcamp"><mdb-icon fab icon="github" class="mr-3"/></a>
         </div>
       </ftr>
     </main>
