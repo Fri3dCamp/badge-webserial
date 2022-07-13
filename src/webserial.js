@@ -63,10 +63,10 @@ async function reset() {
     await port.setSignals({ requestToSend: false, dataTerminalReady: false });
     
     // Wait for the firmware to start
-    await sleep(1000);
+    await sleep(2000);
     
-    // Enter the serial menu's Python Shell option
-    await transceive('\r\n');
+    // Kill ant running apps to entr Python REPL
+    await transceive('\x03', false);
 }
 
 export async function fetch_dir(dir_name) {
