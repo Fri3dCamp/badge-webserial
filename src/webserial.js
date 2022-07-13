@@ -65,7 +65,7 @@ async function reset() {
     // Wait for the firmware to start
     await sleep(2000);
     
-    // Kill ant running apps to entr Python REPL
+    // Kill any running apps to entr Python REPL
     await transceive('\x03', false);
 }
 
@@ -96,6 +96,10 @@ export async function fetch_dir(dir_name) {
 export async function readfile(file_name, return_string=true) {
     file_name = strip_flash(file_name);
     let contents = await transceive(`from upysh import cat; cat('${file_name}')`);
+    if (contents.startsWith('Traceback (most recent call last)')) {
+        console.warn('Failed to read file!')
+        return
+    }
     return contents.replaceAll('\r\n', '\n')
 }
 
