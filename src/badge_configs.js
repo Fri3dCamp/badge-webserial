@@ -21,7 +21,7 @@ export const badges = {
             {"filename": "firmware.bin", "address": 65536, "name": "firmware"}
         ]
     },
-    "fri3d2020": {
+    "fri3dcamp_2022": {
         "name": "Fri3dCamp",
         "flashsize": 16,
         "baudrate": 115200,
