@@ -7,6 +7,10 @@
                     <mdb-card-body>
                         <form>
                             <div class="grey-text">
+                                <div class="form-check form-switch">
+                                  <input class="form-check-input" type="checkbox" role="switch" id="wifiEnabled" v-model="wifi_enabled" />
+                                  <label class="form-check-label" for="wifiEnabled">Default switch checkbox input</label>
+                                </div>
                                 <mdb-input v-model="wifi_ssid" label="Access Point name (SSID)" icon="wifi" type="email"/>
                                 <mdb-input v-model="wifi_password" label="Password" icon="lock" type="password"/>
                             </div>
@@ -94,10 +98,11 @@
                 component.app_slugs = configurable_apps;
             },
             save_wifi: async () => {
-                await writetostdin('import settings;'+
-                    'settings.set("wifi.essid", "' + component.wifi_ssid + '");' +
-                    'settings.set("wifi.password", "' + component.wifi_password + '");' +
-                    'settings.store();\r\n');
+                await writetostdin(
+                    'BADGE.settings().set("wifi.enabled", "true");' +
+                    'BADGE.settings().set("wifi.essid", "' + component.wifi_ssid + '");' +
+                    'BADGE.settings().set("wifi.password", "' + component.wifi_password + '");' +
+                    'BADGE.settings().store();\r\n');
                 component.$emit('genNotification', 'WiFi settings updated successfully');
             },
             save_audio: async () => {
@@ -114,6 +119,7 @@
         },
         data() {
             return {
+              wifi_enabled: false,
                 wifi_ssid: '',
                 wifi_password: '',
                 app_slugs: [],
